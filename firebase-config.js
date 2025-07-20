@@ -1,4 +1,5 @@
-// firebase-config.js (Compat style)
+// firebase-config.js
+
 const firebaseConfig = {
   apiKey: "AIzaSyBLHRnFtECe0vY3yiES4ZBzRrHYivkNsHc",
   authDomain: "claimyourgames-122c6.firebaseapp.com",
