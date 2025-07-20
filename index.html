@@ -3,55 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Claim Your Game</title>
+  <title>Admin Panel - Claim Your Game</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Firebase Compat SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <!-- Firebase Config -->
   <script src="firebase-config.js"></script>
+
+  <!-- Main Script -->
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header>
-    <img src="assets/logo.png" alt="Claim Your Game Logo" />
+  <header style="display:flex; align-items:center; padding: 10px 20px; background:#121212; color:#00ffff;">
+    <img src="assets/logo.png" alt="Claim Your Game Logo" style="height:40px; margin-right: 20px;" />
     <nav>
-      <a href="index.html">Home</a>
-      <a href="#games">Games</a>
-      <a href="#contact">Contact</a>
-      <a href="admin.html">Admin</a>
+      <a href="index.html" style="color:#00ffff; margin-right:15px; text-decoration:none;">Home</a>
+      <a href="admin.html" style="color:#00ffff; text-decoration:none;">Admin</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Claim Your Game</h1>
-    <p>Your ultimate gaming store</p>
-  </section>
+  <main style="padding:30px; max-width:900px; margin:auto; color:#eee; background:#181818; border-radius:8px;">
 
-  <section id="games" class="games">
-    <!-- Games will be loaded here dynamically -->
-  </section>
+    <section id="login-section">
+      <h2 style="color:#00ffff;">Admin Login</h2>
+      <form id="login-form">
+        <label>Email:<br />
+          <input type="email" id="admin-email" required style="width:100%; padding:8px; border-radius:4px; border:none;"/>
+        </label><br /><br />
+        <label>Password:<br />
+          <input type="password" id="admin-password" required style="width:100%; padding:8px; border-radius:4px; border:none;"/>
+        </label><br /><br />
+        <button type="submit" style="padding:10px 20px; font-weight:700; cursor:pointer; background:#00ffff; border:none; border-radius:4px; color:#121212;">Login</button>
+      </form>
+    </section>
 
-  <section id="contact" style="padding: 30px; background:#111; color:#ccc;">
-    <h2>Contact Admin</h2>
-    <form id="contact-form">
-      <label>
-        Name:<br />
-        <input type="text" id="contact-name" required />
-      </label><br /><br />
-      <label>
-        Email:<br />
-        <input type="email" id="contact-email" required />
-      </label><br /><br />
-      <label>
-        Message:<br />
-        <textarea id="contact-message" rows="5" required></textarea>
-      </label><br /><br />
-      <button type="submit" style="padding:10px 20px; background:#00ffff; border:none; cursor:pointer; font-weight:700;">Send</button>
-    </form>
-  </section>
+    <section id="admin-panel" style="display:none;">
+      <h2 style="color:#00ffff;">Game Management</h2>
 
-  <footer>
-    &copy; 2025 Claim Your Game | Follow us on social media!
-  </footer>
+      <form id="game-form" style="margin-bottom: 30px;">
+        <input type="hidden" id="game-id" />
+        <label>Game Title:<br />
+          <input type="text" id="game-title" required style="width:100%; padding:8px; border-radius:4px; border:none;" />
+        </label><br /><br />
+        <label>Image URL:<br />
+          <input type="url" id="game-image" required style="width:100%; padding:8px; border-radius:4px; border:none;" />
+        </label><br /><br />
+        <label>Price:<br />
+          <input type="number" id="game-price" required style="width:100%; padding:8px; border-radius:4px; border:none;" />
+        </label><br /><br />
+        <label>Description:<br />
+          <textarea id="game-description" rows="4" required style="width:100%; padding:8px; border-radius:4px; border:none;"></textarea>
+        </label><br /><br />
+        <button type="submit" style="padding:10px 20px; font-weight:700; cursor:pointer; background:#00ffff; border:none; border-radius:4px; color:#121212;">Add / Update Game</button>
+        <button type="button" id="logout-btn" style="background:#ff0055; margin-left:15px; color:#fff; font-weight:700; padding:10px 20px; border:none; border-radius:4px; cursor:pointer;">Logout</button>
+      </form>
+
+      <h3 style="color:#00ffff;">Current Games</h3>
+      <table style="width:100%; border-collapse: collapse; color:#eee;">
+        <thead>
+          <tr style="border-bottom:1px solid #00ffff;">
+            <th style="text-align:left; padding:10px;">Title</th>
+            <th style="text-align:left; padding:10px;">Price</th>
+            <th style="text-align:left; padding:10px;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="games-table-body">
+          <!-- Games rows populated by JS -->
+        </tbody>
+      </table>
+    </section>
+
+  </main>
 </body>
 </html>
