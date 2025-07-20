@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Panel - Claim Your Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Claim Your Game Logo" />
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main style="padding:30px; max-width:900px; margin:auto;">
+
+    <section id="login-section">
+      <h2>Admin Login</h2>
+      <form id="login-form">
+        <label>Email:<br />
+          <input type="email" id="admin-email" required />
+        </label><br /><br />
+        <label>Password:<br />
+          <input type="password" id="admin-password" required />
+        </label><br /><br />
+        <button type="submit" style="padding:10px 20px; font-weight:700; cursor:pointer;">Login</button>
+      </form>
+    </section>
+
+    <section id="admin-panel" style="display:none;">
+      <h2>Game Management</h2>
+
+      <form id="game-form">
+        <input type="hidden" id="game-id" />
+        <label>Game Title:<br />
+          <input type="text" id="game-title" required />
+        </label><br /><br />
+        <label>Image URL:<br />
+          <input type="url" id="game-image" required />
+        </label><br /><br />
+        <label>Price:<br />
+          <input type="number" id="game-price" required />
+        </label><br /><br />
+        <label>Description:<br />
+          <textarea id="game-description" rows="4" required></textarea>
+        </label><br /><br />
+        <button type="submit" style="padding:10px 20px; font-weight:700; cursor:pointer;">Add / Update Game</button>
+        <button type="button" id="logout-btn" style="background:#ff0055; margin-left:15px; color:#fff; font-weight:700;">Logout</button>
+      </form>
+
+      <h3>Current Games</h3>
+      <table style="width:100%; border-collapse: collapse; color:#eee;">
+        <thead>
+          <tr style="border-bottom:1px solid #00ffff;">
+            <th>Title</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="games-table-body">
+          <!-- Games rows populated by JS -->
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+</body>
+</html>

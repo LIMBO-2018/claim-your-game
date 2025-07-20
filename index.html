@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Claim Your Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Claim Your Game Logo" />
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#games">Games</a>
+      <a href="#contact">Contact</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Claim Your Game</h1>
+    <p>Your ultimate gaming store</p>
+  </section>
+
+  <section id="games" class="games">
+    <!-- Games will be loaded here dynamically -->
+  </section>
+
+  <section id="contact" style="padding: 30px; background:#111; color:#ccc;">
+    <h2>Contact Admin</h2>
+    <form id="contact-form">
+      <label>
+        Name:<br />
+        <input type="text" id="contact-name" required />
+      </label><br /><br />
+      <label>
+        Email:<br />
+        <input type="email" id="contact-email" required />
+      </label><br /><br />
+      <label>
+        Message:<br />
+        <textarea id="contact-message" rows="5" required></textarea>
+      </label><br /><br />
+      <button type="submit" style="padding:10px 20px; background:#00ffff; border:none; cursor:pointer; font-weight:700;">Send</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Claim Your Game | Follow us on social media!
+  </footer>
+</body>
+</html>
